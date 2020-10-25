@@ -37,7 +37,11 @@
                                                 <select name="color" class="form-control">
                                                     <option value=""></option>
                                                     @foreach (App\Models\Color::all() as $color)
-                                                    <option value="{{$color->id}}">{{$color->color_name}}</option>
+                                                     @if ($color->id == $product->product_color)
+                                                        <option value="{{$color->id}}" selected>{{$color->color_name}}</option>
+                                                     @else
+                                                        <option value="{{$color->id}}">{{$color->color_name}}</option>
+                                                     @endif
                                                     @endforeach
                                                 </select>
                                                 @error('color')
@@ -51,7 +55,11 @@
                                                 <select name="size" class="form-control">
                                                     <option value=""></option>
                                                     @foreach (App\Models\Size::all() as $size)
-                                                    <option value="{{$size->id}}">{{$size->size_name}}</option>
+                                                    @if ($size->id == $product->product_size)
+                                                    <option value="{{$size->id}}" selected>{{$size->size_name}}</option>
+                                                 @else
+                                                     <option value="{{$size->id}}">{{$size->size_name}}</option>
+                                                 @endif
                                                     @endforeach
                                                 </select>
                                                 @error('size')
@@ -67,7 +75,11 @@
                                                 <select name="category_id" class="form-control">
                                                     <option value=""></option>
                                                     @foreach (App\Models\Category::all() as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                                    @if ($category->id == $product->category_id)
+                                                    <option value="{{$category->id}}" selected>{{ $category->category_name }}</option>
+                                                 @else
+                                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                                 @endif
                                                     @endforeach
                                                 </select>
                                                 @error('category_id')
