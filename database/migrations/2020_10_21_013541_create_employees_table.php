@@ -16,14 +16,15 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string("employee_name");
+            $table->bigInteger("employee_national_id")->unique();
             $table->string("employee_mobile",15);
             $table->date("employee_dob")->nullable();
             $table->date("employee_hire_date");
             $table->integer("employee_salary");
             $table->integer("employee_commission");
-            $table->foreignId("manager_id")->nullable()->constrained("employees");
+            $table->foreignId("manager_id")->nullable()->constrained("employees")->onDelete('set null');;
             $table->foreignId("job_id")->constrained("jobs");
-            $table->foreignId("branch_id")->constrained("branches");
+            $table->foreignId("branch_id")->nullable()->constrained("branches");
             $table->foreignId("user_id")->constrained("users");
             $table->timestamps();
         });

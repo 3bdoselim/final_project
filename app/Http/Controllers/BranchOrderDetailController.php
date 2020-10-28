@@ -71,9 +71,9 @@ class BranchOrderDetailController extends Controller
      * @param  \App\Models\BranchOrderDetail  $branchOrderDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(BranchOrderDetail $branchOrderDetail)
+    public function edit($brnch,BranchOrderDetail $branchOrderDetail)
     {
-        //
+        return view("branchorderdetails.edit")->with(compact("branchOrderDetail"))->with("brnch",$brnch);
     }
 
     /**
@@ -83,9 +83,21 @@ class BranchOrderDetailController extends Controller
      * @param  \App\Models\BranchOrderDetail  $branchOrderDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BranchOrderDetail $branchOrderDetail)
+    public function update($brnch, Request $request, BranchOrderDetail $branchOrderDetail)
     {
-        //
+
+        $request->validate([
+            "product_count" => "required",
+            "branch_order_id" => "required",
+            "product_id" => "required",
+        ]);
+
+        $branchOrderDetail->product_count = $request->product_count;
+        $branchOrderDetail->branch_order_id = $request->branch_order_id;
+        $branchOrderDetail->product_id = $request->product_id;
+        $branchOrderDetail->save();
+
+        return redirect()->route("branchorderdetails.index",$brnch)->with("msg","Updated")->with("type","success");
     }
 
     /**
@@ -94,8 +106,9 @@ class BranchOrderDetailController extends Controller
      * @param  \App\Models\BranchOrderDetail  $branchOrderDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BranchOrderDetail $branchOrderDetail)
+    public function destroy($brnch,BranchOrderDetail $branchOrderDetail)
     {
-        //
+        $branchOrderDetail->delete();
+        return redirect()->route("branchorderdetails.index",$brnch)->with("msg","Deleted")->with("type","danger");
     }
 }

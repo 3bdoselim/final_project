@@ -125,15 +125,15 @@
                                     <a class="btn btn-sm btn-outline-primary"
                                         href="/branches/{{ $branch->id }}/edit">Edit</a>
                                 </td>
+                                @if ( $branch->sections->count() == 0  )
                                 <td>
-                                    @if ( $branch->sections->count() == 0  )
                                     <form method="POST" action="/branches/{{ $branch->id }}">
                                         @csrf
                                         @method("delete")
                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">
                                     </form>
-                                    @endif
                                 </td>
+                                @endif
                             </tr>
                         @empty
                             <tr>

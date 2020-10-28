@@ -84,7 +84,7 @@ class CustomerController extends Controller
     {
         $request->validate([
             "name" => "required|min:4",
-            "customer_mobile" => "required",
+            "customer_mobile" => "required|unique:customers,customer_mobile,".$customer->id,
         ]); 
 
 

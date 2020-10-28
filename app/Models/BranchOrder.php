@@ -14,4 +14,9 @@ class BranchOrder extends Model
         return $this->belongsTo(Branch::class,"branch_id","id");
 
     }
+
+    public function details()
+    {
+        return $this->hasMany(BranchOrderDetail::class, 'branch_order_id', 'id');
+    }
 }

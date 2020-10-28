@@ -24,7 +24,7 @@
         <div class="col-md-4">
             <div class="card text-white mb-3">
                 <div class="card-header bg-primary ">
-                    <h4>Create New Branch</h4>
+                    <h4>Create New Order Details</h4>
                 </div>
                 <div class="card-body">
                     <form action="/branchorderdetails/{{ $brnch }}/create" method="POST">
@@ -111,10 +111,10 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-primary"
-                                        href="/branchorderdetails/{{ $branchorderdetail->id }}/edit">Edit</a>
+                                        href="/branchorders/{{ $branchorderdetail->branch_order_id}}/branchorderdetails/{{ $branchorderdetail->id}}/edit/">Edit</a>
                                 </td>
                                 <td>
-                                    <form method="POST" action="/branchorderdetails/{{ $branchorderdetail->id }}">
+                                    <form method="POST" action="/branchorders/{{$branchorderdetail->branch_order_id}}/branchorderdetails/{{ $branchorderdetail->id }}">
                                         @csrf
                                         @method("delete")
                                         <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">

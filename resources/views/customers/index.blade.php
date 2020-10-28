@@ -43,7 +43,7 @@
                                 <div style="height: 25%">
                                     <label class="badge badge-dark" for="">Customer Mobile</label>
                                 </div>
-                                <input value="{{ old('mobile') }}" type="text" name="customer_mobile" class="form-control"
+                                <input value="{{ old('customer_mobile') }}" type="text" name="customer_mobile" class="form-control"
                                     placeholder="Customer Mobile">
                                 @error('customer_mobile')
                                 <small class="badge badge-danger">{{ $message }}</small>

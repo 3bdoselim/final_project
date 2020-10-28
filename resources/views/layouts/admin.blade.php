@@ -161,17 +161,18 @@
                 <a class="nav-link" href="/sections">Sections</a>
                 <a class="nav-link" href="/sizes">Sizes</a>
                 <a class="nav-link" href="/colors">Colors</a>
+                <a class="nav-link" href="/jobs">Jobs</a>
             </div>
           </div>
         </div>
       </div>
-      
       <a class="nav-link" href="/products">Products</a>
       <a class="nav-link" href="/customers">Customers</a>
-      <a class="nav-link" href="/jobs">Jobs</a>
       <a class="nav-link" href="/users">Show Users</a>
       <a class="nav-link" href="/users/create">Register User</a>
       <a class="nav-link" href="/branches">Branches</a>
+      <a class="nav-link" href="/employees">Employees</a>
+
   </div>
 
   

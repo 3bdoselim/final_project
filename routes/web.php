@@ -14,6 +14,7 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\BranchOrderController;
 use App\Http\Controllers\BranchOrderDetailController;
+use App\Http\Controllers\EmployeeController;
 use App\Models\Branch;
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ Route::prefix("/users")->middleware(['auth','auth.admin'])->group(function(){
 Route::resource('customers', CustomerController::class)->middleware(['auth', 'auth.admin']);
 Route::resource('jobs', JobController::class)->middleware(['auth', 'auth.admin']);
 Route::resource('branches', BranchController::class)->middleware(['auth', 'auth.admin']);
+Route::resource('employees', EmployeeController::class)->middleware(['auth', 'auth.admin']);
 
 
 Route::prefix("/branchsections/{brnch}")->middleware(['auth','auth.admin'])->group(function(){
@@ -72,7 +74,7 @@ Route::prefix("/branchorders/{brnch}")->middleware(['auth','auth.admin'])->group
     Route::post("/create", [BranchOrderController::class,"store"]);
 });
 Route::put("/branches/{brnch}/branchorders/{branchOrder}", [BranchOrderController::class,"update"])->middleware(['auth','auth.admin']);
-Route::get("/branches/{brnch}/branchorders/{branchOrder}/edit", [BranchOrderController::class,"edit"])->middleware(['auth','auth.admin'])->name("branchsections.edit");
+Route::get("/branches/{brnch}/branchorders/{branchOrder}/edit", [BranchOrderController::class,"edit"])->middleware(['auth','auth.admin'])->name("branchorders.edit");
 Route::delete("/branches/{brnch}/branchorders/{branchOrder}", [BranchOrderController::class,"destroy"])->middleware(['auth','auth.admin']);
 
 
@@ -81,6 +83,6 @@ Route::prefix("/branchorderdetails/{brnch}")->middleware(['auth','auth.admin'])-
     Route::get("/", [BranchOrderDetailController::class,"index"])->name("branchorderdetails.index");
     Route::post("/create", [BranchOrderDetailController::class,"store"]);
 });
-Route::put("/branches/{brnch}/branchorderdetails/{branchOrderDetail}", [BranchOrderDetailController::class,"update"])->middleware(['auth','auth.admin']);
-Route::get("/branches/{brnch}/branchorderdetails/{branchOrderDetail}/edit", [BranchOrderDetailController::class,"edit"])->middleware(['auth','auth.admin'])->name("branchsections.edit");
-Route::delete("/branches/{brnch}/branchorderdetails/{branchOrderDetail}", [BranchOrderDetailController::class,"destroy"])->middleware(['auth','auth.admin']);
+Route::put("/branchorders/{brnch}/branchorderdetails/{branchOrderDetail}", [BranchOrderDetailController::class,"update"])->middleware(['auth','auth.admin']);
+Route::get("/branchorders/{brnch}/branchorderdetails/{branchOrderDetail}/edit", [BranchOrderDetailController::class,"edit"])->middleware(['auth','auth.admin'])->name("branchorderdetails.edit");
+Route::delete("/branchorders/{brnch}/branchorderdetails/{branchOrderDetail}", [BranchOrderDetailController::class,"destroy"])->middleware(['auth','auth.admin']);

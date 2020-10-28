@@ -65,7 +65,7 @@
                         <tr>
                             <th>Branch Name</th>
                             <th>Branch Order Date</th>
-                            <th colspan="3">&nbsp;</th>
+                            <th colspan="2">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,17 +78,21 @@
                                         <a class="btn btn-sm btn-outline-dark"
                                             href="/branchorderdetails/{{ $branchorder->id }}">Order Details</a>
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <a class="btn btn-sm btn-outline-primary"
                                             href="/branches/{{ $branchorder->branch_id }}/branchorders/{{ $branchorder->id }}/edit">Edit</a>
-                                    </td>
+                                    </td> --}}
+                                    @if ( $branchorder->details->count() == 0 )
+
                                     <td>
-                                        <form method="POST" action="/branches/{{ $branchorder->branch_id }}/branchorders/{{ $branchorder->id }}">
-                                            @csrf
-                                            @method("delete")
-                                            <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">
-                                        </form>
+                                            <form method="POST" action="/branches/{{ $branchorder->branch_id }}/branchorders/{{ $branchorder->id }}">
+                                                @csrf
+                                                @method("delete")
+                                                <input class="btn btn-sm btn-outline-danger" type="submit" value="Delete">
+                                            </form>
                                     </td>
+                                    @endif
+
                                 </tr>
                             @endif
 
