@@ -28,4 +28,10 @@ class Employee extends Model
     {
         return $this->hasMany(Employee::class, 'id', 'manager_id');
     }
+
+    public function photos()
+    {
+        return $this->hasMany(EmployeePhoto::class, 'employee_id', 'id');
+    }
+
 }

@@ -93,8 +93,8 @@
                                 <select class="form-control" name="manager_id">
                                     <option value=""></option>
                                     @foreach (App\Models\Employee::all() as $emp)
-                                        <option value="{{$emp->manager_id}} "
-                                        @if ($emp->manager_id  == $employee->manager_id )
+                                        <option value="{{$emp->id}} "
+                                        @if ($emp->id  == $employee->manager_id )
                                             selected
                                         @endif    
                                         >{{$emp->employee_name}}</option>

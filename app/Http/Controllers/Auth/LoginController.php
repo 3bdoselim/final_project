@@ -55,12 +55,15 @@ class LoginController extends Controller
             return $request->wantsJson()
             ? new JsonResponse([], 204)
             : redirect()->intended($this->redirectPath());
-        }else{
+        }elseif($this->guard()->user()->role =="super admin"){
             return $request->wantsJson()
             ? new JsonResponse([], 204)
             : redirect()->intended("/dashboard");
+        }elseif($this->guard()->user()->role =="seller"){
+            return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect()->intended("/dashboardsales");
         }
-      
     }
 
    

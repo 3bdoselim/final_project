@@ -110,11 +110,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
+                            {{-- @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -166,10 +166,26 @@
           </div>
         </div>
       </div>
+
+      <div id="accordion">
+        <div class="card bg-dark">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseOne">
+                <h3>Users</h3>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <a class="nav-link" href="/users">Show Users</a>
+                <a class="nav-link" href="/users/create">Register User</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <a class="nav-link" href="/products">Products</a>
       <a class="nav-link" href="/customers">Customers</a>
-      <a class="nav-link" href="/users">Show Users</a>
-      <a class="nav-link" href="/users/create">Register User</a>
       <a class="nav-link" href="/branches">Branches</a>
       <a class="nav-link" href="/employees">Employees</a>
 

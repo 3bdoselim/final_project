@@ -10,8 +10,8 @@
   <div >{{App\Models\Branch::paginate(4)->links()}}</div>
 <table>
     @foreach (App\Models\Branch::paginate(4) as $branch)
-    <tr>
-        <div id="card" class="col-md-6 card text-white bg-dark text-center mb-1">
+    <tr >
+        <div id="card" class="border-light col-md-6 card text-white bg-dark text-center mb-1">
             <div class="card-header card-header-pills">
               <div class="row">
                 <div style="font-size: 1.4em;"  class="col">

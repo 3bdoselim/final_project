@@ -15,6 +15,7 @@ use App\Http\Controllers\ColorController;
 use App\Http\Controllers\BranchOrderController;
 use App\Http\Controllers\BranchOrderDetailController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeePhotoController;
 use App\Models\Branch;
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +28,17 @@ use App\Models\Branch;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::view("/" , "dashboard")->middleware(['auth', 'auth.admin']);
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::view("/dashboard" , "dashboard")->middleware(['auth', 'auth.admin']);
-
 
 Route::resource('products', ProductController::class)->middleware(['auth', 'auth.admin']);
 Route::resource('categories', CategoryController::class)->middleware(['auth', 'auth.admin']);
@@ -86,3 +87,10 @@ Route::prefix("/branchorderdetails/{brnch}")->middleware(['auth','auth.admin'])-
 Route::put("/branchorders/{brnch}/branchorderdetails/{branchOrderDetail}", [BranchOrderDetailController::class,"update"])->middleware(['auth','auth.admin']);
 Route::get("/branchorders/{brnch}/branchorderdetails/{branchOrderDetail}/edit", [BranchOrderDetailController::class,"edit"])->middleware(['auth','auth.admin'])->name("branchorderdetails.edit");
 Route::delete("/branchorders/{brnch}/branchorderdetails/{branchOrderDetail}", [BranchOrderDetailController::class,"destroy"])->middleware(['auth','auth.admin']);
+
+
+Route::prefix("/employee/images")->middleware(['auth','auth.admin'])->group(function(){
+    route::get("{employee}/manage",[EmployeePhotoController::class,"create"]);
+    route::post("{employee}",[EmployeePhotoController::class,"store"]);
+    route::delete("remove/{employeePhoto}",[EmployeePhotoController::class,"destroy"]);
+});

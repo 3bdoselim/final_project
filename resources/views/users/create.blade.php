@@ -40,7 +40,6 @@
                             <label for="">Role</label>
                             <select class="form-control" name="role" >
                                 <option value="seller">seller</option>
-                                <option value="user">user</option>
                                 <option value="admin">admin</option>
                                 <option value="super admin">super admin</option>
                             </select>
