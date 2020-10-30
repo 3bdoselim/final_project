@@ -118,6 +118,10 @@
                                         href="/branchorders/{{ $branch->id }}">Orders</a>
                                 </td>
                                 <td>
+                                    <a class="btn btn-sm btn-outline-info"
+                                        href="/customerorders/{{ $branch->id }}">CustOrders</a>
+                                </td>
+                                <td>
                                     <a class="btn btn-sm btn-outline-success"
                                         href="/branchsections/{{ $branch->id }}">Sections</a>
                                 </td>

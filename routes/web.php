@@ -6,6 +6,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CustomerOrderController;
+use App\Http\Controllers\CustomerOrderDetailController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\BranchSectionController;
@@ -93,4 +95,24 @@ Route::prefix("/employee/images")->middleware(['auth','auth.admin'])->group(func
     route::get("{employee}/manage",[EmployeePhotoController::class,"create"]);
     route::post("{employee}",[EmployeePhotoController::class,"store"]);
     route::delete("remove/{employeePhoto}",[EmployeePhotoController::class,"destroy"]);
+});
+
+
+
+
+Route::prefix("/customerorders/{branch}")->middleware(['auth','auth.admin'])->group(function(){
+    Route::get("/", [CustomerOrderController::class,"index"])->name("customerorders.index");
+    Route::post("/create", [CustomerOrderController::class,"store"]);
+    Route::put("/customerorder/{customerOrder}", [CustomerOrderController::class,"update"]);
+    Route::get("/customerorder/{customerOrder}/edit", [CustomerOrderController::class,"edit"])->name("branchorders.edit");
+    Route::delete("/customerorder/{customerOrder}", [CustomerOrderController::class,"destroy"]);
+});
+
+
+Route::prefix("/customerorderdetails/{customerorder}")->middleware(['auth','auth.admin'])->group(function(){
+    Route::get("/", [CustomerOrderDetailController::class,"index"])->name("customerorderdetails.index");
+    Route::post("/create", [CustomerOrderDetailController::class,"store"]);
+    Route::put("/customerorderdetail/{customerOrderDetail}", [CustomerOrderDetailController::class,"update"]);
+    Route::get("/customerorderdetail/{customerOrderDetail}/edit", [CustomerOrderDetailController::class,"edit"])->name("customerorderdetails.edit");
+    Route::delete("/customerorderdetail/{customerOrderDetail}", [CustomerOrderDetailController::class,"destroy"]);
 });
