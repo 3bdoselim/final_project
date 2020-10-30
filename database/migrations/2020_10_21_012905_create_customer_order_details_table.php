@@ -16,7 +16,6 @@ class CreateCustomerOrderDetailsTable extends Migration
         Schema::create('customer_order_details', function (Blueprint $table) {
             $table->id();
             $table->integer("product_count");
-            $table->integer("product_price");
             $table->foreignId("customer_order_id")->constrained("customer_orders");
             $table->foreignId("product_id")->constrained("products");
 

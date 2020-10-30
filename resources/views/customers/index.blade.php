@@ -88,7 +88,7 @@
                                 <td>{{ $customer->customer_name }}</td>
                                 <td>{{ $customer->customer_mobile }}</td>
                                 <td>{{ $customer->customer_address }}</td>
-                                <td><a class="btn btn-sm btn-outline-success" href="/customerorders/{{$customer->id}}">Prev Purchases</a>
+                                {{-- <td><a class="btn btn-sm btn-outline-success" href="/customerorders/{{$customer->id}}">Prev Purchases</a> --}}
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-primary"

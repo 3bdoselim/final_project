@@ -97,7 +97,7 @@
                             <th>Branch Opens</th>
                             <th>Branch Closes</th>
                             <th>Branch Location</th>
-                            <th colspan="4">&nbsp;</th>
+                            <th colspan="5">&nbsp;</th>
                         </tr>
                     </thead>
                     <tfoot>
